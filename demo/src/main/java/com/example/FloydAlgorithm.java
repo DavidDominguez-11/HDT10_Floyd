@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FloydAlgorithm {
-    private static final int INFINITY = Integer.MAX_VALUE;
+    public static final int INFINITY = Integer.MAX_VALUE;
 
-    public int[][] floydAlgorithm(Graph graph) {
+    public FloydResult floydAlgorithm(Graph graph) {
         Map<String, Integer> vertexMap = new HashMap<>();
         int n = 0;
         for (String vertex : graph.adjacencyList.keySet()) {
@@ -14,9 +14,11 @@ public class FloydAlgorithm {
         }
 
         int[][] distances = new int[n][n];
+        int[][] predecessors = new int[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 distances[i][j] = INFINITY;
+                predecessors[i][j] = -1;
             }
         }
 
@@ -26,6 +28,7 @@ public class FloydAlgorithm {
             for (Map.Entry<String, Integer> neighbor : graph.adjacencyList.get(source).entrySet()) {
                 int destinationIndex = vertexMap.get(neighbor.getKey());
                 distances[sourceIndex][destinationIndex] = neighbor.getValue();
+                predecessors[sourceIndex][destinationIndex] = sourceIndex;
             }
         }
 
@@ -35,12 +38,13 @@ public class FloydAlgorithm {
                     if (distances[i][k] != INFINITY && distances[k][j] != INFINITY
                             && distances[i][k] + distances[k][j] < distances[i][j]) {
                         distances[i][j] = distances[i][k] + distances[k][j];
+                        predecessors[i][j] = predecessors[k][j];
                     }
                 }
             }
         }
 
-        return distances;
+        return new FloydResult(distances, predecessors);
     }
 
     public void printShortestPaths(Graph graph, int[][] distances) {

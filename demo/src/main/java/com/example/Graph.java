@@ -15,11 +15,16 @@ public class Graph {
     }
 
     public void addEdge(String source, String destination, int weight) {
+        addVertex(source);  // Asegura que el vértice fuente exista
+        addVertex(destination);  // Asegura que el vértice destino exista
         adjacencyList.get(source).put(destination, weight);
     }
 
     public void removeEdge(String source, String destination) {
-        adjacencyList.get(source).remove(destination);
+        Map<String, Integer> neighbors = adjacencyList.get(source);
+        if (neighbors != null) {
+            neighbors.remove(destination);
+        }
     }
 
     public void printGraph() {

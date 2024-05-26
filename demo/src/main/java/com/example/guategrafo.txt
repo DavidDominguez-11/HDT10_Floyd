@@ -1,0 +1,14 @@
+Mixco Antigua 30
+Antigua Escuintla 25
+Escuintla SantaLucia 15
+SantaLucia Guatemala 40
+Guatemala Coban 130
+Coban Flores 210
+Flores Livingston 90
+Livingston PuertoBarrios 60
+PuertoBarrios Zacapa 120
+Zacapa Chiquimula 30
+Chiquimula Jalapa 45
+Jalapa Jutiapa 50
+Jutiapa SantaRosa 75
+SantaRosa Guatemala 90
