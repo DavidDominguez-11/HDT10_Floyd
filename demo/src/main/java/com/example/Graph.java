@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Graph {
-    private Map<String, Map<String, Integer>> adjacencyList;
+    Map<String, Map<String, Integer>> adjacencyList;
 
     public Graph() {
         adjacencyList = new HashMap<>();
